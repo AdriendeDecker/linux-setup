@@ -44,7 +44,7 @@ sudo timedatectl set-local-rtc 1
 
 # Install new shell
 # WARN: might need some user validations
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+sudo snap install starship
 echo 'eval "$(starship init bash)"' >> ~/.bashrc
 
 # Install Howdy (windows hello for linux)
@@ -88,4 +88,5 @@ green=`tput setaf 2`
 echo "${green}---------------------"
 echo "${green}| Install completed |"
 echo "${green}---------------------"
-echo "\n don't forget to restart after install"
+echo ""
+echo "Don't forget to restart after install"
