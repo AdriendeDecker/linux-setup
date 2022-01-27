@@ -14,30 +14,32 @@ sudo apt install -yy gdebi \
   snapd \
   lsb-release \
   ca-certificates \
-  gnupg \
-  vlc
+  gnupg
+
+# Install misc
+sudo snap install vlc
+sudo snap install spotify
+sudo snap install discord
 
 # Install dev tools
 sudo apt install -yy git default-jre default-jdk
 sudo apt install nodejs -yy
 sudo snap install code --classic
-sudo snap install discord
 sudo snap install eclipse --classic
 sudo snap install postman
 sudo snap install flutter --classic
-sudo snap install spotify
-
-# Install Brave browser
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt update -qq
-sudo apt install brave-browser -yy
 
 # Install Google Chrome
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 sudo apt-get update
 sudo apt-get install google-chrome-stable
+
+# Install Brave browser
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update -qq
+sudo apt install brave-browser -yy
 
 # Fix timedate issues for dualboot (windows change hour after reboot from linux)
 sudo timedatectl set-local-rtc 1
@@ -85,8 +87,9 @@ echo "alias ns='npm start'" >> .bashrc
 echo "alias nrt='npm run test'" >> .bashrc
 
 green=`tput setaf 2`
+reset=`tput sgr0`
 echo "${green}---------------------"
 echo "${green}| Install completed |"
 echo "${green}---------------------"
-echo ""
+echo "${reset}"
 echo "Don't forget to restart after install"
